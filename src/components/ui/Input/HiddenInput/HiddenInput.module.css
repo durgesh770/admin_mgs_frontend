@@ -1,0 +1,27 @@
+.password_input_container>div {
+    width: 364px;
+    height: 40px;
+    border: 0.5px solid var(--brand-light-gray-color);
+    outline: none;
+    border-radius: 0;
+
+
+    color: var(--brand-dark-grey-color);
+    font-family: var(--mulish);
+    font-size: 14px;
+    font-style: normal;
+    flex-shrink: 0;
+    font-weight: 400;
+    line-height: normal;
+    letter-spacing: 1.75px;
+
+    margin-top: 13px;
+}
+
+.password_input_container>fieldset,
+.password_input_container>input {
+    border: none;
+    outline: none;
+    border-color: var(--brand-light-gray-color);
+    padding-left: 10px;
+}

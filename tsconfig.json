@@ -1,0 +1,46 @@
+{
+  "compilerOptions": {
+    "target": "es5",
+    "lib": [
+      "dom",
+      "dom.iterable",
+      "esnext"
+    ],
+    "allowJs": true,
+    "skipLibCheck": true,
+    "strict": true,
+    "forceConsistentCasingInFileNames": true,
+    "noEmit": true,
+    "esModuleInterop": true,
+    "module": "esnext",
+    "moduleResolution": "node",
+    "resolveJsonModule": true,
+    "isolatedModules": true,
+    "jsx": "preserve",
+    "incremental": true,
+    "plugins": [
+      {
+        "name": "next"
+      }
+    ],
+    "baseUrl": ".",
+    "paths": {
+      "@/*": [
+        "./src/*"
+      ]
+    }
+  },
+  "include": [
+    "next-env.d.ts",
+    "**/*.ts",
+    "**/*.tsx",
+    ".next/types/**/*.ts",
+    "src/components/ui/Button.jsx",
+    "src/app/page.js",
+    "src/components/ui/DropDownSelect/index.tsx", "src/features/TeamMembers/SelectRole/index.js", "src/features/TeamMembers/create-member/index.js", "src/features/Appointments/ComponentFeatures/AppointmentDetailsFeatures", "src/app/my-profile/page.js", "src/components/common/Icon/index.js", "src/hooks/TimeTracker.tsx",
+  ],
+  "exclude": [
+    "node_modules",
+    "src/app/page.js",
+  ]
+}
