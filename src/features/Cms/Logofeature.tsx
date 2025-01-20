@@ -14,7 +14,7 @@ import { useAuth } from "@/context/AuthContext";
 const Logofeature = () => {
   const { handleCreate, loading } = useManageCMS();
   const { CMSData } = useAuth();
-  const [logo, setLogo] = useState(CMSData.logo);
+  const [logo, setLogo] = useState(CMSData?.logo);
   const [file, setFile] = useState<File | null>(null);
   const [isDisable, setDisable] = useState(true);
 

@@ -13,7 +13,7 @@ const AdminLogoFeature = () => {
   const { CMSData } = useAuth();
 
   // state
-  const [admin, setAdmin] = useState(CMSData.admin.text);
+  const [admin, setAdmin] = useState(CMSData?.admin?.text);
 
   const [colors, setColors] = useState({
     secondary: "#00FF00",
@@ -22,8 +22,8 @@ const AdminLogoFeature = () => {
 
   useEffect(() => {
     setColors({
-      secondary: CMSData.admin.secondary,
-      tertiary: CMSData.admin.tertiary,
+      secondary: CMSData?.admin?.secondary,
+      tertiary: CMSData?.admin?.tertiary,
     });
   }, [CMSData]);
 
@@ -34,8 +34,8 @@ const AdminLogoFeature = () => {
       handleCreate({
         admin: {
           text: admin,
-          secondary: colors.secondary,
-          tertiary: colors.tertiary,
+          secondary: colors?.secondary,
+          tertiary: colors?.tertiary,
         },
       });
     }
