@@ -319,7 +319,7 @@ const useAppointmentFlow = (defaultAppointmentId = "") => {
     calculateAmounts({
       bookings: tableselectedData,
       manageDiscount: manageDiscount,
-      dynamicTax: CMSData.tax,
+      dynamicTax: CMSData?.tax,
     }).then((amount) => {
       setDiscount(amount);
     });

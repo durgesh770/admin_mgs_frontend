@@ -29,7 +29,7 @@ const ConfirmTotal = ({ data }: AddDiscountprops) => {
                 <div> <span>${data?.subtotal}</span></div>
             </div>
             <div className='flex justify-between w-full p-2 text-center'>
-                <div> <span>Tax - {CMSData.tax}%</span></div>
+                <div> <span>Tax - {CMSData?.tax}%</span></div>
                 <div> <span>${data?.tax}</span></div>
             </div>
 

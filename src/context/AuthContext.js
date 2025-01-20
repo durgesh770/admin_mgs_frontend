@@ -22,17 +22,18 @@ export const AuthProvider = ({ children }) => {
     const getUIChanges = () => {
         CMSServices.getCMS()
             .then((res) => {
-                setCMSData(res.data)
-                document.documentElement.style.setProperty('--brand-color', res.data.colors.brand);
-                document.documentElement.style.setProperty('--brand-pastel-color', res.data.colors.pastel);
-                document.documentElement.style.setProperty('--brand-grey-color', res.data.colors.grey);
-                document.documentElement.style.setProperty('--brand-white-color', res.data.colors.white);
+                setCMSData(res?.data)
+                if (!res.data) return;
+                document.documentElement.style.setProperty('--brand-color', res?.data?.colors?.brand);
+                document.documentElement.style.setProperty('--brand-pastel-color', res?.data?.colors?.pastel);
+                document.documentElement.style.setProperty('--brand-grey-color', res?.data?.colors?.grey);
+                document.documentElement.style.setProperty('--brand-white-color', res?.data?.colors?.white);
 
                 // admin text color 
-                document.documentElement.style.setProperty('--admin-color-one', res.data.admin.secondary);
-                document.documentElement.style.setProperty('-admin-color-two', res.data.admin.tertiary);
+                document.documentElement.style.setProperty('--admin-color-one', res?.data?.admin?.secondary);
+                document.documentElement.style.setProperty('-admin-color-two', res?.data?.admin?.tertiary);
 
-                localStorage.setItem("logo", res.data.logo)
+                localStorage.setItem("logo", res?.data?.logo)
             }).finally(() => {
                 setLoader(false)
             })
@@ -48,6 +49,7 @@ export const AuthProvider = ({ children }) => {
                 .then((res) => {
                     if (!res.success) return;
                     setUser(res.data.user);
+                    console.log("res.data.rolesAndPermissions ===>>", res.data)
                     setrolesAndPermissions(res.data.rolesAndPermissions);
                 })
                 .catch((err) => {
