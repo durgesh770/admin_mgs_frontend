@@ -6,12 +6,12 @@ import { useManageCMS } from "@/hooks/CMS";
 import { CMSProps } from "@/interface/CMS";
 
 const Bannerfeature = ({ data }: CMSProps) => {
-  const { handleCreate, loading } = useManageCMS();
   const alert = useSnackbar();
+  const { handleCreate, loading } = useManageCMS();
   const [OfferBanner, setOfferBanner] = useState("");
 
   useEffect(() => {
-    setOfferBanner(data.offer_banner);
+    setOfferBanner(data?.offer_banner);
   }, [data]);
 
   const handleUpdate = () => {
@@ -25,7 +25,7 @@ const Bannerfeature = ({ data }: CMSProps) => {
   return (<>
       <div className="py-2">
         <TextEditor
-          defaultValue={data.offer_banner}
+          defaultValue={data?.offer_banner}
           value={OfferBanner}
           onChange={(newValue) => setOfferBanner(newValue)}
           placeholder={"Write here..."}

@@ -43,7 +43,7 @@ const Navbar = () => {
                                     <ArrowBackIosIcon onClick={() => setsideba()} className=' cursor-pointer' style={{ color: '#43484E' }} />
                                 }
                             </div>
-                            <img src={`data:image/jpeg;base64,${logo}`} width={60} height={20} alt='logo-img' className='ml-5' />
+                            <img src={`${logo}`} width={60} height={20} alt='logo-img' className='ml-5' />
                             <h1 class="ml-12 font-extrabold text-gray-900 dark:text-white sm:text-[21px] text-[10px] text-transparent bg-clip-text bg-gradient-to-r to-[--admin-color-two] from-[--admin-color-one] ost sm:block hidden uppercase">{CMSData?.admin?.text || "ADMIN AREA"}</h1>
                         </div>
 

@@ -46,9 +46,9 @@ const TextEditor = ({
       </div>
         <div className="py-4" hidden={show}>
           <SimpleTextEditor
-            defaultValue={defaultValue}
+            // defaultValue={defaultValue}
             value={value}
-            onChange={onChange}
+            onChange={(newValue) => onChange(newValue)}
             placeholder={placeholder}
             Fixedheight={Fixedheight}
             maxWords={maxWords}

@@ -1,6 +1,6 @@
 // react
 import Image from "next/image";
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 // mui
 import CancelOutlinedIcon from "@mui/icons-material/CancelOutlined";
 //conponent
@@ -19,19 +19,20 @@ const Logofeature = () => {
   const [isDisable, setDisable] = useState(true);
 
   const handleFileChange = (selectedFile: File) => {
-    // Handle file change logic here
     setFile(selectedFile);
-
-    // Assuming you want to display the image directly from the uploaded file
     const reader = new FileReader();
     reader.onload = () => {
       if (typeof reader.result === "string") {
-        setLogo(reader.result.replace("data:image/jpeg;base64,", ""));
+        setLogo(reader.result);
       }
     };
     reader.readAsDataURL(selectedFile);
     setDisable(false);
   };
+
+  useEffect(()=>{
+    setLogo(CMSData?.logo)
+  }, [CMSData?.logo])
 
   return (
     <>
@@ -49,12 +50,12 @@ const Logofeature = () => {
           <div className=" bg-white  border border-[--brand-light-gray-color] rounded-lg shadow-md p-5 min-h-[150px] overflow-y-auto hiddenScrollbar relative  ">
             <div
               onClick={() => setLogo(null)}
-              className="absolute top-0 right-0 cursor-pointer "
+              className="absolute top-0 right-0 cursor-pointer"
             >
               <CancelOutlinedIcon />
             </div>
-            <div className=" flex justify-center items-center ">
-              {logo && <Image src={`data:image/jpeg;base64,${logo}`} width={180} height={150} alt="logo" />}
+            <div className=" flex justify-center items-center">
+              {logo && <Image src={`${logo}`} width={180} height={150} alt="logo" />}
             </div>
           </div>
         </div>

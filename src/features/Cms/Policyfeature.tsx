@@ -36,6 +36,7 @@ const Policyfeature = ({ data }: CMSProps) => {
   }, [data]);
 
   const handleTextAreaChange = (key: string, value: string) => {
+    
     setTextAreas((prevState) => ({
       ...prevState,
       [key]: value,
