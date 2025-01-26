@@ -15,14 +15,10 @@ const Colorsfeature = ({ data }: CMSProps) => {
   });
 
   useEffect(() => {
-    if (data.colors.white) {
-      setColors(data.colors);
+    if (data?.colors?.white) {
+      setColors(data?.colors);
     }
   }, [data]);
-
-  const handleSave = () => {
-    ;
-  };
 
   const handleReset = () => {
     handleCreate({

@@ -28,10 +28,10 @@ const Policyfeature = ({ data }: CMSProps) => {
 
   useEffect(() => {
     setTextAreas({
-      tc: data.policy.termsAndConditions,
-      privacy: data.policy.privacyPolicy,
-      book: data.policy.bookingPolicy,
-      cancel: data.policy.refundsAndCancellationPolicy,
+      tc: data?.policy?.termsAndConditions,
+      privacy: data?.policy?.privacyPolicy,
+      book: data?.policy?.bookingPolicy,
+      cancel: data?.policy?.refundsAndCancellationPolicy,
     });
   }, [data]);
 
@@ -69,7 +69,7 @@ const Policyfeature = ({ data }: CMSProps) => {
       {value == 0 && (
         <div>
           <TextEditor
-            defaultValue={data.policy.termsAndConditions}
+            defaultValue={data?.policy?.termsAndConditions}
             value={textAreas.tc}
             onChange={(newValue) => handleTextAreaChange("tc", newValue)}
             placeholder={"Write here..."}
@@ -81,7 +81,7 @@ const Policyfeature = ({ data }: CMSProps) => {
       {value == 1 && (
         <div>
           <TextEditor
-            defaultValue={data.policy.privacyPolicy}
+            defaultValue={data?.policy?.privacyPolicy}
             value={textAreas.privacy}
             onChange={(newValue) => handleTextAreaChange("privacy", newValue)}
             placeholder={"Write here..."}
@@ -93,7 +93,7 @@ const Policyfeature = ({ data }: CMSProps) => {
       {value == 2 && (
         <div>
           <TextEditor
-            defaultValue={data.policy.bookingPolicy}
+            defaultValue={data?.policy?.bookingPolicy}
             value={textAreas.book}
             onChange={(newValue) => handleTextAreaChange("book", newValue)}
             placeholder={"Write here..."}
@@ -105,7 +105,7 @@ const Policyfeature = ({ data }: CMSProps) => {
       {value == 3 && (
         <div>
           <TextEditor
-            defaultValue={data.policy.refundsAndCancellationPolicy}
+            defaultValue={data?.policy?.refundsAndCancellationPolicy}
             value={textAreas.cancel}
             onChange={(newValue) => handleTextAreaChange("cancel", newValue)}
             placeholder={"Write here..."}
