@@ -22,12 +22,17 @@ export const AuthProvider = ({ children }) => {
     const getUIChanges = () => {
         CMSServices.getCMS()
             .then((res) => {
+
+                console.log("res ====>>" , res)
                 setCMSData(res?.data)
                 if (!res.data) return;
-                document.documentElement.style.setProperty('--brand-color', res?.data?.colors?.brand);
-                document.documentElement.style.setProperty('--brand-pastel-color', res?.data?.colors?.pastel);
-                document.documentElement.style.setProperty('--brand-grey-color', res?.data?.colors?.grey);
-                document.documentElement.style.setProperty('--brand-white-color', res?.data?.colors?.white);
+
+                if(res?.data?.colors){
+                    document.documentElement.style.setProperty('--brand-color', res?.data?.colors?.brand);
+                    document.documentElement.style.setProperty('--brand-pastel-color', res?.data?.colors?.pastel);
+                    document.documentElement.style.setProperty('--brand-grey-color', res?.data?.colors?.grey);
+                    document.documentElement.style.setProperty('--brand-white-color', res?.data?.colors?.white);
+                }
 
                 // admin text color 
                 document.documentElement.style.setProperty('--admin-color-one', res?.data?.admin?.secondary);

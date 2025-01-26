@@ -22,7 +22,7 @@ const PaginationUI: React.FC<PaginationUIProps> = ({
           onChange={handleChange}
           hidePrevButton
           hideNextButton
-          count={totalPage} // You can adjust the count as needed
+          count={totalPage} 
           variant="outlined"
           shape="rounded"
           sx={{
