@@ -4,6 +4,7 @@ import React, { createContext, useContext, useEffect, useState } from 'react';
 import { TeamMemberService } from "@/services";
 import { CMSServices } from '@/services/CMS';
 import { useSnackbar } from '@/context/GlobalContext';
+import { useRouter } from 'next/navigation';
 
 const AuthContext = createContext();
 
@@ -13,6 +14,7 @@ export const useAuth = () => {
 
 export const AuthProvider = ({ children }) => {
     let alert = useSnackbar()
+    const router =   useRouter()
 
     const [user, setUser] = useState(null);
     const [rolesAndPermissions, setrolesAndPermissions] = useState({});
@@ -24,7 +26,7 @@ export const AuthProvider = ({ children }) => {
             .then((res) => {
                 setCMSData(res?.data)
                 if (!res.data) return;
-                if(res?.data?.colors){
+                if (res?.data?.colors) {
                     document.documentElement.style.setProperty('--brand-color', res?.data?.colors?.brand);
                     document.documentElement.style.setProperty('--brand-pastel-color', res?.data?.colors?.pastel);
                     document.documentElement.style.setProperty('--brand-grey-color', res?.data?.colors?.grey);
@@ -34,8 +36,8 @@ export const AuthProvider = ({ children }) => {
                 document.documentElement.style.setProperty('--admin-color-one', res?.data?.admin?.secondary);
                 document.documentElement.style.setProperty('-admin-color-two', res?.data?.admin?.tertiary);
                 localStorage.setItem("logo", res?.data?.logo)
-            }).finally(() => {
-                setLoader(false)
+            }).finally(()=>{
+                fetchUser()
             })
     }
 
@@ -44,36 +46,25 @@ export const AuthProvider = ({ children }) => {
     }, [])
 
     const fetchUser = async () => {
-        try {
-            await TeamMemberService.getMe()
-                .then((res) => {
-                    if (!res.success) return;
-                    setUser(res.data.user);
-                    // console.log("res.data.rolesAndPermissions ===>>", res.data)
-                    setrolesAndPermissions(res.data.rolesAndPermissions);
-                })
-                .catch((err) => {
-                    alert.SnackbarHandler(true, "error", err.response?.data?.data || "An error occurred")
-                }).finally(() => {
-                    setLoader(false)
-                })
-
-        } catch (error) {
-            console.error("Error fetching user data:", error);
-        }
+        await TeamMemberService.getMe()
+            .then((res) => {
+                if (!res.success) return;
+                setUser(res.data.user);
+                setrolesAndPermissions(res.data.rolesAndPermissions);
+            })
+            .catch((err) => {
+                alert.SnackbarHandler(true, "error", err.response?.data?.data || "An error occurred")
+            }).finally(() => {
+                setLoader(false)
+            })
     };
-
-    useEffect(() => {
-        if (!user) {
-            fetchUser();
-        }
-    }, [user]);
 
     const value = {
         CMSData, user, setUser, loader,
         rolesAndPermissions,
         permissions: rolesAndPermissions[user?.role?.roleId] || []
     };
+
     return (
         <AuthContext.Provider value={value}>
             {children}

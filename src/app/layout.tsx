@@ -44,11 +44,13 @@ export default function RootLayout({
           <GlobalProvider>
             <Snackbar />
             <AuthProvider>
-              <ProtectRoute>
+              {/* <ProtectRoute> */}
                 <TimeProvider>
-                  <LayoutFeature>{children}</LayoutFeature>
+                  <LayoutFeature>
+                    {children}
+                    </LayoutFeature>
                 </TimeProvider>
-              </ProtectRoute>
+              {/* </ProtectRoute> */}
             </AuthProvider>
           </GlobalProvider>
         </ThemeRegistry>

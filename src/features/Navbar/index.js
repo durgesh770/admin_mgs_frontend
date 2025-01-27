@@ -48,7 +48,7 @@ const Navbar = () => {
                         </div>
 
                         <div class="flex  flex-row items-center">
-                            <div className='mr-5 md:block  hidden '> <OnlyTimeTracker /></div>
+                            <div className='mr-5 md:block  hidden'><OnlyTimeTracker /></div>
                             <div class="mr-2"><Novu /></div>
 
                             <div class="ml-3">
@@ -60,8 +60,8 @@ const Navbar = () => {
                                     }
                                 >
                                     <Dropdown.Header>
-                                        <span className="block text-sm">{user.name}</span>
-                                        <span className="block text-sm font-medium truncate">{user.email}</span>
+                                        <span className="block text-sm">{user?.name}</span>
+                                        <span className="block text-sm font-medium truncate">{user?.email}</span>
                                     </Dropdown.Header>
 
                                     <Link href={'/my-profile'}>

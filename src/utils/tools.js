@@ -25,15 +25,15 @@ export function removeEmptyValues(obj) {
 }
 
 export function getInitialLetter(name) {
-  const nameParts = name.split(" ");
+  const nameParts = name?.split(" ");
   let final = "";
 
-  if (nameParts.length > 1) {
+  if (nameParts?.length > 1) {
     const firstLetter = nameParts[0]?.charAt(0);
     const secLetter = nameParts[1]?.charAt(0);
     final = firstLetter + secLetter;
   } else {
-    final = name.charAt(0);
+    final = name?.charAt(0);
   }
   const capitalizedInitial = final?.toUpperCase();
   return capitalizedInitial;

@@ -1,6 +1,6 @@
 'use client';
 
-import { useEffect } from "react"; // Import useEffect hook
+import { useEffect } from "react";
 import { useAuth } from "@/context/AuthContext";
 import { usePathname, useRouter } from "next/navigation";
 
@@ -25,7 +25,7 @@ const ProtectRoute = ({ children }) => {
   );
 
   useEffect(() => {
-    if (loader) return; // Prevent any actions when loader is true
+    if (loader) return;
 
     if (user) {
       if (authURL) {
@@ -38,7 +38,7 @@ const ProtectRoute = ({ children }) => {
     }
   }, [user, loader]);
 
-  if (loader) return <div className="w-full h-screen"><h1 className=" text-center pt-[22%]">Loading . . .</h1></div>;
+  if (loader) return <div className="w-full h-screen"><h1 className="text-center pt-[22%]">Loading . . .</h1></div>;
   return children;
 };
 
