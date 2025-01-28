@@ -424,11 +424,11 @@ export const CreateCustomer = () => {
 
   const submit = () => {
     setLoader(false);
-    CustomerService.createCustomer(formData)
+    CustomerService.createCustomer({...formData, telephone:formData.phone})
       .then((res) => {
         if (res.success) {
           setLoader(true);
-          window.location.reload();
+          // window.location.reload();
         }
       })
       .catch((err) => {

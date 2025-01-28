@@ -3,17 +3,12 @@ import FullCalendar from '@fullcalendar/react';
 import dayGridPlugin from '@fullcalendar/daygrid';
 import timeGridPlugin from '@fullcalendar/timegrid';
 
-function FullCalendarView({ events, handleEventClick, open, setOpen }) {
-
+function FullCalendarView({ events, handleEventClick }) {
   // Custom render function for event content
   function renderEventContent(eventInfo) {
-    const item = eventInfo?.event?.extendedProps?.data;
-
     return (
-      <div>
-        <div className='view-title'>
-          <i className='break-words cursor-pointer'>{eventInfo?.event?.title}</i>
-        </div>
+      <div className={`view-title w-full`} style={{ backgroundColor: `${eventInfo.event.backgroundColor}` }}>
+        <i className='break-words cursor-pointer'>{eventInfo?.event?.title}</i>
       </div>
     );
   }
@@ -37,7 +32,6 @@ function FullCalendarView({ events, handleEventClick, open, setOpen }) {
       )}
 
       <style>{`
-      
       .fc-toolbar-chunk{
         display: flex;
       }

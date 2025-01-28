@@ -15,7 +15,7 @@ export const formatLeaveCalanderData = (data = []) => {
                         id: item.id,
                         other: item
                     },
-                    backgroundColor: item.status == "approved" ? "var(--green-color)" : "var(--orange-color)",
+                    backgroundColor: item.status == "approved" ? "#0FB900" : "#F98917",
                 })
             } else {
 
@@ -25,12 +25,12 @@ export const formatLeaveCalanderData = (data = []) => {
                         title: item?.teamMemberId?.name,
 
                         start: date,
-    
+
                         data: {
                             id: item.id,
                             other: item
                         },
-                        backgroundColor: item.status == "approved" ? "var(--green-color)" : "var(--orange-color)",
+                        backgroundColor: item.status == "approved" ? "#0FB900" : "#F98917",
                     })
                 })
 

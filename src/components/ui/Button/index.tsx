@@ -30,6 +30,8 @@ const GlobalStyle = () => (
     color: #FFF;
     background: var(--brand-black-color);
     fontFamily: var(--mulish);
+    display:flex;
+    alignItem:center;
   }
 
   .outline-btn{
@@ -97,7 +99,7 @@ interface ButtonProps extends React.ButtonHTMLAttributes<HTMLButtonElement> {
     | "red"
     | "green";
   loading: boolean;
-  isDisable?:boolean
+  isDisable?: boolean;
 }
 
 const Button: React.FC<ButtonProps> = ({
@@ -112,8 +114,8 @@ const Button: React.FC<ButtonProps> = ({
   return (
     <>
       <button {...restProps} className={btn_class} disabled={isDisable}>
-        {loading && <CircularProgress size={16} style={{ color: "#fff" }} />}
-        {children}
+        {loading && <CircularProgress size={12} style={{ color: "#fff" }} />}
+        <span>{children}</span>
       </button>
       <GlobalStyle />
     </>

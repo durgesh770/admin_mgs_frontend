@@ -6,8 +6,8 @@ import { useEffect } from "react";
 import { useAuth } from "@/context/AuthContext";
 import { useGlobal } from "@/context/GlobalContext";
 import { useRouter } from "next/navigation";
-import TimeTrackerDrawer from "../TeamMembers/TimeTrackerDrawer/TimeTrackerDrawer"
 import { usePathname } from "next/navigation";
+import TimeTrackerDrawer from "../TeamMembers/TimeTrackerDrawer/TimeTrackerDrawer"
 
 export const Authenticated = ({ children }) => {
     const { sidebar } = useGlobal()
@@ -55,6 +55,7 @@ const Layout = ({ children }) => {
     ];
     let { user, loader } = useAuth()
     const router = useRouter()
+    
     let authURL = withoutAuthAccessURL.find((url) =>
         String(pathname).includes(url)
     );

@@ -109,18 +109,14 @@ export default function FilterUI({
 
   const renderButtons = () => (
     <div className="flex items-baseline justify-between mt-3">
-      {check ? (
-        <ButtonCom
-          loading={false}
-          onClick={handleSearch}
-          btnType="secondary"
-          className="mt-[10px] mr-[10px] h-[40px]"
-        >
-          SEARCH
-        </ButtonCom>
-      ) : (
-        <CircularProgress />
-      )}
+      <ButtonCom
+        loading={!check}
+        onClick={handleSearch}
+        btnType="secondary"
+        className="mt-[10px] mr-[10px] h-[40px]"
+      >
+        SEARCH
+      </ButtonCom>
       <ButtonCom
         loading={false}
         onClick={handleReset}

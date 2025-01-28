@@ -5,7 +5,7 @@ import ButtonCom from '../../../components/ui/Button'
 import ServiceForm from "@/features/Services/Form"
 import { deleteService, updateService } from "@/hooks/Services";
 import { PermissionAccess } from "@/middleware/PermissionAccess"
-import { Button, Divider, Grid, Typography } from "@mui/material"
+import { Button, Divider, Grid} from "@mui/material"
 // mui
 import ClearOutlinedIcon from '@mui/icons-material/ClearOutlined';
 
@@ -24,43 +24,40 @@ const EditService = ({ defaultData }) => {
             ...formData,
             duration: totalMinutes,
             active: switchValue,
-            isComplex:true
+            isComplex: true
         };
         serviceHook.submit(body);
     }
 
     return (
-        <>
-            <Modal customOpen={open} customClose={setOpen} >
-                <div className="bg-[--brand-pastel-color] border border-gray-300 rounded-xl  ">
-                    <div className="flex flex-row items-center justify-between">
-                        <Grid><Button onClick={()=>setOpen(false)} ><ClearOutlinedIcon /></Button></Grid>
-                        <h1 class="text-2xl font-semibold text-[--brand-color] p-4">Edit Services</h1>
-                        <div>
-                        </div>
-                    </div>
-                    <Divider />
-                    <div className="max-h-[90vh] overflow-y-auto">
-                        <ServiceForm
-                            defaultData={defaultData}
-                            setData={setData}
-                        />
-
-                        <Grid className="StaffMemberCss m-3">
-                            <PermissionAccess requiredPermissions={["delete_service"]}>
-                                <Grid>
-                                    <ButtonCom btnType={'delete'} onClick={() => deleteHook.submit()}>Delete</ButtonCom>
-                                </Grid>
-                            </PermissionAccess>
-
-                            <Grid>
-                                <ButtonCom loading={serviceHook.loading} btnType={'secondary'} onClick={handleSubmit} >Save</ButtonCom>
-                            </Grid>
-                        </Grid>
+        <Modal customOpen={open} customClose={setOpen} >
+            <div className="bg-[--brand-pastel-color] border border-gray-300 rounded-xl">
+                <div className="flex flex-row items-center justify-between">
+                    <Grid><Button onClick={() => setOpen(false)} ><ClearOutlinedIcon /></Button></Grid>
+                    <h1 class="text-2xl font-semibold text-[--brand-color] p-4">Edit Services</h1>
+                    <div>
                     </div>
                 </div>
-            </Modal>
-        </>
+                <Divider />
+                <div className="max-h-[90vh] overflow-y-auto">
+                    <ServiceForm
+                        defaultData={defaultData}
+                        setData={setData}
+                    />
+                    <Grid className="StaffMemberCss m-3">
+                        <PermissionAccess requiredPermissions={["delete_service"]}>
+                            <Grid>
+                                <ButtonCom loading={deleteHook.loading} btnType={'delete'} onClick={() => deleteHook.submit()}>Delete</ButtonCom>
+                            </Grid>
+                        </PermissionAccess>
+
+                        <Grid>
+                            <ButtonCom loading={serviceHook.loading} btnType={'secondary'} onClick={handleSubmit} >Save</ButtonCom>
+                        </Grid>
+                    </Grid>
+                </div>
+            </div>
+        </Modal>
     )
 }
 

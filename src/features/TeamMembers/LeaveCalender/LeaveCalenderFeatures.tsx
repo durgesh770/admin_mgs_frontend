@@ -30,7 +30,6 @@ const LeaveCalenderFeatures = () => {
 
   // state
   const [tabValue, setTabValue] = useState(getExistingTab());
-  const [calender, setCalender] = useState(false);
   const [drawerOpen, setDrawerOpen] = useState(false);
   const [defaultModal, setDefaultModal] = useState(false);
   const [open, setOpen] = useState(false);
@@ -59,6 +58,7 @@ const LeaveCalenderFeatures = () => {
   });
   // multiple date logic state
   const tomorrow = new Date();
+  const [leaveRequestModal, setLeaveRequestModal] = useState();
   tomorrow.setDate(tomorrow.getDate() + 1);
   const [multiDate, setMultiDate] = useState([tomorrow]);
   const [rageDate, setRangeDate] = useState([tomorrow]);
@@ -108,8 +108,6 @@ const LeaveCalenderFeatures = () => {
     setDefaultModal,
   });
 
-  const [leaveRequestModal, setLeaveRequestModal] = useState();
-
   const format = formatLeaveCalanderData(leaveHook.leave);
   const handleEventClick = (eventClickInfo: any) => {
     // Handle the event click logic here
@@ -117,6 +115,8 @@ const LeaveCalenderFeatures = () => {
     setLeaveRequestModal(item);
     setDefaultModal(true);
   };
+
+  console.log("formate ====>>", format);
 
   return (
     <>
@@ -138,7 +138,7 @@ const LeaveCalenderFeatures = () => {
         <div className="py-4 ">
           <Tab value={tabValue} setValue={handleTabChange} tabs={tabs} />
 
-          {tabValue === 0 && (
+          {tabValue === 0 &&  (
             <LeaveCalenderTable
               handleOptions={handleOptions}
               option={option}
@@ -149,15 +149,11 @@ const LeaveCalenderFeatures = () => {
           )}
 
           {tabValue === 1 && (
-            <div>
-              {/* <FullCalendar /> */}
-              <FullCalendarView
-                events={format}
-                handleEventClick={handleEventClick}
-                open={calender}
-                setOpen={setCalender}
-              />
-            </div>
+            format.length > 0 &&
+            <FullCalendarView
+              events={format}
+              handleEventClick={handleEventClick}
+            />
           )}
 
           <RequestLeave
