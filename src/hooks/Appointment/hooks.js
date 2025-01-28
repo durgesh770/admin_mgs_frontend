@@ -62,7 +62,7 @@ export function formatServicesData({ tableselectedData = [], finalResponse = {} 
             const teamMemberId = teamMember?.id;
 
             // Find teamMemberSchedule in finalResponse.data based on teamMemberId
-            const teamMemberSchedule = finalResponse.data.find(
+            const teamMemberSchedule = finalResponse?.data?.find(
                 (schedule) => schedule.teamMemberId === teamMemberId
             );
 

@@ -41,15 +41,15 @@ export const NextAppointmentUI = ({
       }}
     >
       <div className="w-fit">
-        {findLoading ? <CircularProgress size={20} /> : <ButtonCom btnType="outline" onClick={() => setNext(false)}>Back</ButtonCom>}
+        <ButtonCom loading={findLoading} btnType="outline" onClick={() => setNext(false)}>Back</ButtonCom>
       </div>
 
-      <div >
+      <div>
         <ConfirmAppointment data={previewData} setPaymentData={setPaymentData} takePayment={takePayment} />
         <ErrorRender API_RUN={API_RUN} memberResponse={memberResponse} errors={errors} />
       </div>
 
-      {submitLoading ? <CircularProgress size={20} /> : <ButtonCom btnType='secondary' onClick={handleSubmit}>Submit</ButtonCom>}
+      <ButtonCom loading={submitLoading} btnType='secondary' onClick={handleSubmit}>Submit</ButtonCom>
     </Grid>
   );
 };
@@ -114,8 +114,8 @@ export const CreateAppointmentUI = ({
                 path={'appointments/all-appointment'}
                 rightSide={<>
                   <div className='flex justify-between w-full gap-1' >
-                    {Loading == "find" ? <CircularProgress size={16} /> : <ButtonCom onClick={find} btnType="secondary" >Find</ButtonCom>}
-                    {Loading == "next" ? <CircularProgress size={16} /> : API_RUN && <ButtonCom btnType="outline" onClick={next}>Next</ButtonCom>}
+                    {<ButtonCom loading={Loading == "find"} onClick={find} btnType="secondary" >Find</ButtonCom>}
+                    {API_RUN && <ButtonCom loading={Loading == "next"} btnType="outline" onClick={next}>Next</ButtonCom>}
                   </div>
                 </>}
               />

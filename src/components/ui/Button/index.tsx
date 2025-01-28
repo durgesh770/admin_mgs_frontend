@@ -16,6 +16,9 @@ const GlobalStyle = () => (
     fontFamily: var(--mulish);
     border-radius:3px;
     width: 100%; // Ensure full width
+    display: flex; /* Ensures the content is a flex container */
+    align-items: center; /* Centers content vertically */
+    justify-content: center; /* Centers content horizontally */
   }
 
   .primary-btn{
@@ -24,6 +27,10 @@ const GlobalStyle = () => (
     background: var(--brand-color);
     border: none;
     fontFamily: var(--mulish);
+    display:flex;
+    justifyContent:center;
+    alignItem:center;
+    textAlign:center;
   }
 
   .secondary-btn{
@@ -31,7 +38,9 @@ const GlobalStyle = () => (
     background: var(--brand-black-color);
     fontFamily: var(--mulish);
     display:flex;
+    justifyContent:center;
     alignItem:center;
+    textAlign:center;
   }
 
   .outline-btn{
@@ -40,12 +49,20 @@ const GlobalStyle = () => (
     color: var(--brand-black-color);
     fontFamily: var(--mulish);
     border-radius:0.3rem;
+    display:flex;
+    justifyContent:center;
+    alignItem:center;
+    textAlign:center;
   }
 
   .disabled-btn{
     color: var(  --brand-dark-grey-color);
     background: var(--brand-disabled-white-color);
     fontFamily: var(--mulish);
+    display:flex;
+    justifyContent:center;
+    alignItem:center;
+    textAlign:center;
   }
 
   .blue-btn{
@@ -61,6 +78,10 @@ const GlobalStyle = () => (
   .white-btn{
     background:white;
     fontFamily: var(--mulish);
+    display:flex;
+    justifyContent:center;
+    alignItem:center;
+    textAlign:center;
   }
 
   .delete-btn{
@@ -68,6 +89,10 @@ const GlobalStyle = () => (
     background:white;
     border: 1.5px solid red;
     fontFamily: var(--mulish);
+    display:flex;
+    justifyContent:center;
+    alignItem:center;
+    textAlign:center;
   }
   .red-btn{
     color:white;
@@ -75,6 +100,10 @@ const GlobalStyle = () => (
     padding:10px 20px;
     border-radius:3px;
     fontFamily: var(--mulish);
+    display:flex;
+    justifyContent:center;
+    alignItem:center;
+    textAlign:center;
   }
   .green-btn{
     color:white;
@@ -82,6 +111,10 @@ const GlobalStyle = () => (
     padding:10px 20px;
     border-radius:3px;
     fontFamily: var(--mulish);
+    display:flex;
+    justifyContent:center;
+    alignItem:center;
+    textAlign:center;
   }
 `}</style>
 );
@@ -114,8 +147,8 @@ const Button: React.FC<ButtonProps> = ({
   return (
     <>
       <button {...restProps} className={btn_class} disabled={isDisable}>
-        {loading && <CircularProgress size={12} style={{ color: "#fff" }} />}
-        <span>{children}</span>
+        {loading && <CircularProgress size={12} style={{ color: "#FFFFFF" }} />}
+        <span className=" text-center">{children}</span>
       </button>
       <GlobalStyle />
     </>
