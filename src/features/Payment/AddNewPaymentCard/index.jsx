@@ -52,7 +52,7 @@ const AddNewPaymentCard = ({ customerId, refresh }) => {
             setLoading(false);
             return alert.SnackbarHandler(true, "error", error.message);
         };
-        
+
         const res = await PaymentService.addNewPaymentCard({
             customerId: customerId,
             paymentMethodId: paymentMethod.id

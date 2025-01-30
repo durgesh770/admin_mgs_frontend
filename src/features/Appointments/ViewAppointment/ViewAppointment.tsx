@@ -1,16 +1,11 @@
 "use client";
 // react
-import React, { useEffect, useState } from "react";
-import { useParams } from "next/navigation";
+import React, { useState } from "react";
 // moment
 import moment from "moment";
-
 //component
-import { Textarea } from "flowbite-react";
 import ViewHeaderUI from "@/components/ui/Appointments/ViewAppointment/ViewHeaderUI";
 import PageTitle from "@/components/ui/PageTitle";
-import SideDrawer from "@/components/ui/SideDrawer";
-import Button from "@/components/ui/Button";
 import ViewPatientNotefeature from "./ViewPatientNotefeature";
 import ConfirmAppointment from "../ConfirmAppointment/ConfirmAppointment";
 import WarningModal from "@/components/ui/Modal/Warning";
@@ -85,7 +80,7 @@ const ViewAppointment = ({ data }: { data: Appointment }) => {
               status: chips(data, data?.date),
             }}
             payment={{
-              status: data?.paymentId.paymentStatus,
+              status: data?.paymentId?.paymentStatus,
             }}
             options={appointmentActionOptions(
               data?.status,
@@ -99,11 +94,11 @@ const ViewAppointment = ({ data }: { data: Appointment }) => {
               handleActionClick(
                 data.id,
                 option,
-                data.paymentId.id,
+                data.paymentId?.id,
                 setIsDrawerOpen
               )
             }
-            timestamp={moment(data.createdAt).format("DD MMM YYYY h:mm a")}
+            timestamp={moment(data?.createdAt).format("DD MMM YYYY h:mm a")}
           />
         </div>
         <div className="py-4">

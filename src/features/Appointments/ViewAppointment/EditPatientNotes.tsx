@@ -1,8 +1,8 @@
-import AddCommntsUI from "@/components/ui/Appointments/ViewAppointment/EditCommntsUI";
-import SideDrawer from "@/components/ui/SideDrawer";
+import React from "react";
 import { addAllNotes } from "@/hooks/Appointment";
 import { useRouter } from "next/navigation";
-import React from "react";
+import SideDrawer from "@/components/ui/SideDrawer";
+import AddCommntsUI from "@/components/ui/Appointments/ViewAppointment/EditCommntsUI";
 
 const EditPatientNotes = ({
   formData,
