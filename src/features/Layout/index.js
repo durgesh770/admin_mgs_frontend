@@ -51,7 +51,8 @@ const Layout = ({ children }) => {
         "verify-email",
         "verify",
         "reset",
-        "forget-password"
+        "forget-password",
+        "payment-success"
     ];
     let { user, loader } = useAuth()
     const router = useRouter()
