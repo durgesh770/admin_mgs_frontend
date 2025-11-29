@@ -53,7 +53,7 @@ export const AuthProvider = ({ children }) => {
                 setrolesAndPermissions(res.data.rolesAndPermissions);
             })
             .catch((err) => {
-                alert.SnackbarHandler(true, "error", err.response?.data?.data || "An error occurred")
+               // alert.SnackbarHandler(true, "error", err.response?.data?.data || "An error occurred")
             }).finally(() => {
                 setLoader(false)
             })
